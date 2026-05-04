@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Meu Amor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pangolin&family=Quicksand:wght@400;600&display=swap');
+        
+        body {
+            background-color: #ffe4e6;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .love-card {
+            border-radius: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(244, 114, 182, 0.3);
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .heart-bg {
+            background-image: radial-gradient(#fb7185 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="heart-bg min-h-screen flex items-center justify-center p-6">
+
+    <main class="w-full max-w-sm">
+        <!-- Card Principal -->
+        <div class="love-card bg-white p-8 text-center relative overflow-hidden">
+            
+            <!-- Decoração de Panda/Pet -->
+            <div class="floating mb-6 inline-block">
+                <span class="text-6xl">🐼</span>
+            </div>
+
+            <h1 class="text-2xl font-bold text-rose-500 mb-2">Para: Maria Rita [Vulgo Amor da Minha Vida]</h1>
+            <p class="text-gray-600 leading-relaxed mb-6">
+                "Você é a razão do meu sorriso todos os dias. Que a nossa felicidade continue crescendo como esse código!"
+            </p>
+
+            <!-- Foto Centralizada -->
+            <div class="relative w-40 h-40 mx-auto mb-6">
+                <div class="absolute inset-0 bg-rose-200 rounded-full scale-110 blur-sm"></div>
+                <img src="amor.jpeg" alt="Foto de vocês" class="relative rounded-full w-full h-full object-cover border-4 border-white shadow-lg">
+            </div>
+
+            <!-- Botão de Interação -->
+            <button onclick="soltarCoracoes()" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full transition-all active:scale-95 shadow-md">
+                Clique aqui ❤️
+            </button>
+        </div>
+
+        <!-- Rodapé fofo -->
+        <p class="text-center text-rose-400 mt-8 text-sm font-semibold tracking-widest uppercase">
+            Com amor, Luiz Henrick [Vulgo Abreu kkk]
+        </p>
+    </main>
+
+    <script>
+        function soltarCoracoes() {
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.className = 'fixed text-2xl pointer-events-none';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = '100vh';
+                heart.style.transition = `all ${Math.random() * 2 + 3}s linear`;
+                heart.style.opacity = '1';
+                
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.style.top = '-10vh';
+                    heart.style.left = (parseFloat(heart.style.left) + (Math.random() * 20 - 10)) + 'vw';
+                    heart.style.opacity = '0';
+                }, 100);
+
+                setTimeout(() => heart.remove(), 5000);
+            }
+        }
+    </script>
+</body>
+</html>
